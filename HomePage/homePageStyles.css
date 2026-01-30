@@ -1,0 +1,25 @@
+.heading {
+    text-align: center;
+    background-color: blue;
+    color: white;
+    height: 100%;
+}
+body {
+    display: grid;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    background-color: gold;
+    margin-top: 25%;
+}
+
+.heading, .buttons {
+    width: 100%;
+}
+
+.button {
+    margin: 10px;
+}
