@@ -1,6 +1,10 @@
+html {
+    background-color: blue;
+}
+
 .heading {
     text-align: center;
-    background-color: blue;
+    background-color: black;
     color: white;
     height: 100%;
 }

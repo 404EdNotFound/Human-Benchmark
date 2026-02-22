@@ -1,0 +1,43 @@
+html {
+    background-color: blue;
+    text-align: center;
+}
+
+#footer {
+    position: relative;
+}
+
+#scoring {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#link-List {
+    background: blue;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+#linkingLinks {
+    color: yellow;
+    text-decoration: none;
+    padding: 10px;
+}
+
+#linkingLinks:hover {
+    cursor: pointer;
+    background-color: rgb(7, 186, 186);
+}
+
+#linkingLinks:active {
+    background-color: aqua;
+}
+
+body {
+    padding: 20px;
+}

@@ -1,12 +1,61 @@
 html {
     background-color: blue;
-    text-align: center;
 }
 
 .AboutPage {
     background-color: white;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.footer {
+    position: relative;
+}
+
+#link-List {
+    background: blue;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+#linkingLinks {
+    color: yellow;
+    text-decoration: none;
+    padding: 10px;
+}
+
+#linkingLinks:hover {
+    cursor: pointer;
+    background-color: rgb(7, 186, 186);
+}
+
+#linkingLinks:active {
+    background-color: aqua;
+}
+
+.AboutPage, .TypingPage {
+    text-align: center;
 }
 
 #textBox {
     background-color: greenyellow;
+    text-align: center;
+}
+
+#timerText {
+    background-color: yellow;
+    width: 20%;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+body {
+    padding: 20px;
 }
