@@ -8,18 +8,12 @@ body {
     padding: 20px;
 }
 
-.AboutPage {
-    background-color: white;
-    justify-content: center;
-    margin-top: 10px;
-    padding: 10px;
-}
-
 .footer {
     position: relative;
 }
 
-#link-List, li {
+#link-List,
+li {
     background-color: white;
     list-style-type: none;
     display: flex;
@@ -45,18 +39,10 @@ body {
     background-color: aqua;
 }
 
-.AboutPage, .TypingPage {
+.AboutPage {
+    background-color: white;
     text-align: center;
-}
-
-#textBox {
-    background-color: greenyellow;
-}
-
-#timerText {
-    background-color: yellow;
-    width: 20%;
-    align-items: center;
-    margin: 0 auto;
+    justify-content: center;
     margin-top: 10px;
+    padding: 10px;
 }
