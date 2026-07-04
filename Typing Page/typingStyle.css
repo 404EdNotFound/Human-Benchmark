@@ -51,6 +51,8 @@ body {
 
 #textBox {
     background-color: greenyellow;
+    width: fit-content;
+    margin: 20px auto;
 }
 
 #timerText {

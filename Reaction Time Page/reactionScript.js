@@ -1,4 +1,5 @@
 const reaction_Square = document.getElementById("reactionSquare")
+const startButton = document.getElementById("StartButton")
 
 let elapsedTime = 0
 let startTime = 0
@@ -7,7 +8,7 @@ let clickable = false;
 let activeRound = false;
 
 function randomisetime() {
-    let time = Math.floor(Math.random() * ((7 - 2) + 1) + 2)
+    let time = Math.floor(Math.random() * ((5 - 2) + 1) + 2)
     CountingDown(time)
 }
 
@@ -46,18 +47,27 @@ function measureTime() {
     }
 }
 
+function preStart() {
+    activeRound = false;
+    clickable = false;
+    reaction_Square.style.backgroundColor = "#0000FF"
+    reaction_Square.textContent = "Press the Start Button to Start"
+}
+
 function Start() {
     activeRound = true
     clickable = false;
+    startButton.remove()
     reaction_Square.style.backgroundColor = "#FF0000"
     reaction_Square.textContent = "When you see green, click as quickly as you can!"
+    reaction_Square.onclick = stopClick
     randomisetime()
     const removeButton = document.getElementById("TryAgain")
     removeButton.remove()
 }
 
 function stopClick() {
-    if (!clickable) {
+    if (!clickable && reaction_Square.style.backgroundColor != "#0000FF") {
         reaction_Square.innerText = "Too Soon!"
         GenerateTryAgain()
         activeRound = false
@@ -87,4 +97,4 @@ if (TryAgainButton === null) {
 }
 
 setInterval(measureTime, 10)
-document.addEventListener("DOMContentLoaded", () => {Start()})
+document.addEventListener("DOMContentLoaded", () => {preStart()})
