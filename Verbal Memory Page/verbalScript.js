@@ -58,3 +58,5 @@ function newClick() {
         generateWord()
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {generateWord()})
