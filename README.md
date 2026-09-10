@@ -12,7 +12,7 @@ This is a Work in Progress (not completed yet)
 * Verbal Memory (Functional)
 * Sequence Test (Needs working)
 * Aim Trainer (Needs Working)
-* Number Memory (Needs Working)
+* Number Memory (Functional)
 * Chimp Test (Needs Working)
 * Visual Memory (Needs Working)
 
