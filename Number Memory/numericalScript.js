@@ -1,4 +1,5 @@
 const numberInputValue = document.getElementById("numberInput")
+const submitButton = document.getElementById("submitButton")
 const playerInputValue = document.getElementById("playerInput")
 
 let numericalLength = 1
@@ -21,7 +22,7 @@ function generateNumber() {
 
 function memoriseNummber(time) {
     if (time <= 0) {
-        allowInput()
+        playerInputValue.disabled = false
         numberInputValue.textContent = "What number was shown!"
         return
     }
@@ -29,20 +30,14 @@ function memoriseNummber(time) {
     setTimeout(() => memoriseNummber(time-1), 1000)
 }
 
-function allowInput() {
-    playerInputValue.disabled = false
-}
-
 function sendInput() {
     let message = document.getElementById("message")
     if (message === null) {
-        const numericalSection = document.querySelector(".numericalSection")
+        let numericalSection = document.querySelector(".numericalSection")
         message = document.createElement("p")
         message.id = "message"
         numericalSection.appendChild(message)
     }
-
-    playerInputValue.disabled = true
     let playerAnswer = playerInputValue.value
 
     if (playerAnswer === number) {
@@ -51,8 +46,33 @@ function sendInput() {
     }
 
     else {
+        playerInputValue.hidden = true
+        submitButton.hidden = true
         numberInputValue.textContent = "The number was: " + number
         message.innerText = "You have reached up to: " + numericalLength + " " + "Characters!"
+        numericalLength = 1
+        TryAgain()
+    }
+}
+
+function TryAgain() {
+    let TryAgainButton = document.getElementById("TryAgainButton")
+    if (TryAgainButton === null) {
+        numericalSection = document.querySelector(".numericalSection")
+        TryAgainButton = document.createElement("button")
+        TryAgainButton.id = "TryAgainButton"
+        TryAgainButton.innerText = "Try Again!"
+        numericalSection.appendChild(TryAgainButton)
+    }
+
+    TryAgainButton.hidden = false
+
+    TryAgainButton.onclick = () => {
+        generateNumber()
+        playerInputValue.hidden = false
+        submitButton.hidden = false
+        message.textContent = ""
+        TryAgainButton.hidden = true
     }
 }
 
