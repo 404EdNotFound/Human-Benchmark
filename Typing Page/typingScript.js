@@ -8,7 +8,7 @@ const quotes = ["Hey, this is just a test", "Hello World.", "The quick brown fox
 
 let quote = ""
 let running = false
-let startTime = 0 
+let startingTime = 0 
 let runningTime = 0
 let minutes = 0
 let seconds = 0
@@ -23,32 +23,32 @@ function generateQuote() {
 
 function startTyping() {
     running = true
-    startTime = performance.now()
+    startingTime = performance.now()
     updateTime()
 }
 
 function updateTime() {
     typedText = characterType.value
     if (running && (typedText.length < quote.length)) {
-        runningTime = performance.now() - startTime
+        runningTime = performance.now() - startingTime
 
         seconds = Math.floor(runningTime / 1000) % 60
         minutes = Math.floor(runningTime / 1000 / 60) % 60
 
         
     timerText.textContent = minutes.toString() + ":" + seconds.toString().padStart(2, "0")
-    calculateResult()
     }
 
     else {
         characterType.disabled = true
         generateResetButton()
     }
+    calculateResult()
 }
 
 function resetTime() {
     running = false
-    startTime = 0
+    startingTime = 0
     runningTime = 0
 
     generateQuote()
@@ -60,7 +60,7 @@ function calculateResult() {
     let mistakes = 0
 
     for (let i = 0; i <= typedText.length; i++) {
-        if (typedText[i] !== target[i]) {
+        if (typedText[i] != target[i]) {
             mistakes++
         }
     }
@@ -74,13 +74,23 @@ function calculateResult() {
 }
 
 function generateResetButton() {
-    let resetButton = document.createElement("button")
-    resetButton.id = "resetButton"
-    resetButton.innerText = "Reset"
+    let resetButton = document.getElementById("resetButton")
+    if (resetButton === null) {
+        const buttonSection = document.querySelector(".TypingPage")
+        resetButton = document.createElement("button") 
+        resetButton.id = "resetButton"
+        resetButton.innerText = "Reset"
+        buttonSection.appendChild((resetButton)) 
+    }
+
+    resetButton.hidden = false
 
     resetButton.onclick = () => {
         resetTime()
         runningTime = 0
+        characterType.disabled = false
+        resetButton.hidden = true
+        characterType.value = ""
     }
 }
 
