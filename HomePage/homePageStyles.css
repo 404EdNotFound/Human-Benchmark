@@ -20,6 +20,10 @@ body {
     margin-top: 25%;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .heading, .buttons {
     width: 100%;
 }

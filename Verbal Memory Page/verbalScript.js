@@ -9,9 +9,28 @@ let lives = 3
 let usedWords = []
 let currentWord = ""
 
+let seenButton = document.getElementById("seen")
+let newButton = document.getElementById("new")
+
+function generateRestartButton() {
+    let verbalSection = document.querySelector(".game")
+    let restartButton = document.createElement("button")
+    restartButton.id = "restart"
+    restartButton.innerText = "RESTART!"
+    verbalSection.appendChild(restartButton)
+
+    restartButton.onclick = () => {
+        restart()
+        restartButton.hidden = true
+    }
+}
+
 function generateWord() {
     if (lives == 0) {
         word.textContent = "Game Over!!!"
+        seenButton.hidden = true
+        newButton.hidden = true
+        generateRestartButton()
     }
 
     else {    
@@ -49,7 +68,6 @@ function newClick() {
 
     else if (lives == 0) {
         usedWords = []
-        generateWord()
     }
 
     else {
@@ -57,6 +75,14 @@ function newClick() {
         livesText.textContent = `Lives: ${lives}`
         generateWord()
     }
+}
+
+function restart() {
+    lives = 3
+    livesText.textContent = `Lives: ${lives}`
+    seenButton.hidden = false
+    newButton.hidden = false
+    generateWord()
 }
 
 document.addEventListener("DOMContentLoaded", () => {generateWord()})

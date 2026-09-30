@@ -1,9 +1,8 @@
-
 const reaction_Square = document.getElementById("reactionSquare")
 const startButton = document.getElementById("StartButton")
 
 let elapsedTime = 0
-let startTime = 0
+let startingTime = 0
 let running = false;
 let clickable = false;
 let activeRound = false;
@@ -33,13 +32,13 @@ function changeBackground() {
 
 function enableTime() {
     running = true
-    startTime = performance.now() - elapsedTime
+    startingTime = performance.now() - elapsedTime
     measureTime()
 }
 
 function measureTime() {
     if (running) {
-        elapsedTime = performance.now() - startTime
+        elapsedTime = performance.now() - startingTime
     }
 
     else {
@@ -64,20 +63,21 @@ function Start() {
     reaction_Square.onclick = stopClick
     randomisetime()
     const removeButton = document.getElementById("TryAgain")
-    removeButton.remove()
+    if (removeButton) {    
+        removeButton.remove()}
 }
 
 function stopClick() {
-    if (!clickable && reaction_Square.style.backgroundColor != "#0000FF") {
+    if (!clickable) {
         reaction_Square.innerText = "Too Soon!"
-        GenerateTryAgain()
         activeRound = false
+        GenerateTryAgain()
         return
     }
     
     running = false;
     measureTime()
-    reaction_Square.textContent = elapsedTime.toFixed(0).toString().padStart(2, "0")
+    reaction_Square.textContent = elapsedTime.toFixed(0).toString().padStart(2, "0") + "ms"
     GenerateTryAgain()
 }
 
